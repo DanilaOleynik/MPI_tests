@@ -1,6 +1,6 @@
 #PBS -l walltime=00:10:00
 #PBS -l nodes=3
-#PBS -A CSC108
+#PBS -A XXXX
 #PBS -q debug
 
 date
