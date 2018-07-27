@@ -1,0 +1,15 @@
+#PBS -l walltime=00:10:00
+#PBS -l nodes=3
+#PBS -A CSC108
+#PBS -q debug
+
+date
+# ATHENA setup
+export LD_LIBRARY_PATH=/ccs/proj/csc108/AtlasReleases/ldpatch:$LD_LIBRARY_PATH
+export SW_INSTALL_AREA=/ccs/proj/csc108/AtlasReleases/21.0.15
+source $SW_INSTALL_AREA/AtlasSetup/scripts/asetup.sh 21.0.15 --releasesarea=$SW_INSTALL_AREA --cmakearea=$SW_INSTALL_AREA/sw/lcg/contrib/CMake --gcclocation=$SW_INSTALL_AREA/sw/lcg/releases/gcc/4.9.3/x86_64-slc6
+export PYTHONPATH=$PYTHONPATH:/ccs/proj/csc108/AtlasReleases/python2.7/site-packages/
+date
+cd /lustre/atlas/proj-shared/csc108/debug/danila/MPI_test/workdir/
+aprun -n 3 -d 16 python /lustre/atlas/proj-shared/csc108/debug/danila/MPI_test/python/simple_MPI.py
+date
